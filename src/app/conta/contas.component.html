@@ -1,0 +1,134 @@
+<div class="img-responsive">
+<img src="https://www.tivic.com.br/wp-content/themes/tivic/assets/img/logo.png" >
+</div>
+<!-- Seleção de opção -->
+<div class="container content">
+
+  <label for="opcao">Selecione uma opção:</label>
+  <select [(ngModel)]="opcaoSelecionada" name="opcao" id="opcao">
+    <option value="listar">Listar Todas as Contas</option>
+    <option value="adicionar">Adicionar Conta</option>
+    <option value="editar">Editar Conta</option>
+    <option value="movimentar">Movimentação</option>
+    <option value="deletar">Deletar Conta</option>
+  </select>
+</div>
+
+<!-- Listagem de Contas -->
+<div *ngIf="opcaoSelecionada === 'listar'">
+  <h2 class="container2">Lista de Contas</h2>
+  <table >
+    <div class="container1">
+    <thead>
+      <tr >
+        <th >ID da Conta</th>
+        <th>Banco</th>
+        <th>Titular</th>
+        <th>Saldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conta of contas">
+        <td>{{ conta._id }}</td>
+        <td>{{ conta.banco }}</td>
+        <td>{{ conta.titular }}</td>
+        <td>{{ conta.saldo | currency:'BRL'}}</td>
+      </tr>
+    </tbody>
+  </div>
+
+  </table>
+</div>
+
+
+<!-- Adicionar nova Conta -->
+<div *ngIf="opcaoSelecionada === 'adicionar'">
+  <h2 class="container2">Adicionar Conta</h2>
+  <form class="form" (submit)="addConta()">
+    <div>
+      <label for="banco">Banco:</label>
+      <input type="text" [(ngModel)]="newConta.banco" name="banco" id="banco" required>
+    </div>
+    <div>
+      <label for="cc">Conta Corrente:</label>
+      <input type="text" [(ngModel)]="newConta.cc" name="cc" id="cc" required>
+    </div>
+    <div>
+      <label for="titular">Titular:</label>
+      <input type="text" [(ngModel)]="newConta.titular" name="titular" id="titular" required>
+    </div>
+    <div>
+      <label for="saldo">Saldo:</label>
+      <input type="text" [(ngModel)]="newConta.saldo" name="saldo" id="saldo" required>
+    </div>
+    <button type="submit" class="block">Adicionar</button>
+  </form>
+</div>
+
+<!-- Editar Conta -->
+<div *ngIf="opcaoSelecionada === 'editar'">
+  <h2 class="container2">Editar Conta</h2>
+  <div class="layout">
+    <label for="idConta">ID da Conta:</label>
+    <input class="campo" type="text" id="idConta" name="idConta" [(ngModel)]="idConta">
+    <button (click)="onSearch()">Buscar</button>
+  </div>
+  <div *ngIf="conta">
+    <div>
+      <label for="banco">Banco:</label>
+      <input class="campo" type="text" id="banco" name="banco" [(ngModel)]="banco">
+    </div>
+    <div>
+      <label for="cc">Conta Corrente:</label>
+      <input class="campo" type="text" id="cc" name="cc" [(ngModel)]="cc">
+    </div>
+    <div>
+      <label for="titular">Titular:</label>
+      <input class="campo" type="text" id="titular" name="titular" [(ngModel)]="titular">
+    </div>
+    <div>
+      <label for="saldo">Saldo:</label>
+      <input class="campo" type="text" id="saldo" name="saldo" [(ngModel)]="saldo">
+    </div>
+    <button (click)="onUpdate(idConta)">Atualizar</button>
+    <p>{{message}}</p>
+  </div>
+</div>
+
+<!-- Movimentação na Conta -->
+<div *ngIf="opcaoSelecionada === 'movimentar'">
+  <h2 class="container2">Movimentação na Conta</h2>
+  <div class="container3">
+    <div>
+      <label for="tipoMovimentacao">Tipo de Movimentação:</label>
+      <select class="campo" id="tipoMovimentacao" name="tipoMovimentacao" [(ngModel)]="tipoMovimentacao">
+        <option value="deposito">Depósito</option>
+        <option value="saque">Saque</option>
+      </select>
+    </div>
+    <div>
+      <label for="idContaMovimentacao">ID da Conta:</label>
+      <input class="campo" type="text" id="idContaMovimentacao" name="idContaMovimentacao" [(ngModel)]="idContaMovimentacao">
+    </div>
+    <div>
+      <label for="valorMovimentacao">Valor:</label>
+      <input class="campo" type="text" id="valorMovimentacao" name="valorMovimentacao" [(ngModel)]="valorMovimentacao">
+    </div>
+    <button (click)="onMovimentacao()">Confirmar</button>
+    <p>{{messageMovimentacao}}</p>
+  </div>
+</div>
+
+
+<!-- Remover Conta -->
+<div *ngIf="opcaoSelecionada === 'deletar'">
+  <h2 class="container2">Deletar Conta</h2>
+  <div class="layout">
+    <label for="idConta">ID da Conta:</label>
+    <input class="campo" type="text" id="idConta" [(ngModel)]="idConta" name="idConta">
+    <button (click)="onSubmit(idConta)">Deletar</button>
+  </div>
+  <div *ngIf="message">
+    <p>{{ message }}</p>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+.img-responsive{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+     font-size: 1rem;
+}
+.container1{
+    margin: 15px;
+
+   }
+.container2{
+    display: grid;
+    background-color: #f5f5f5;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 4px;
+}
+.container3{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:30px;
+    font-size: 1rem;
+}
+.layout{
+    display: grid;
+    /* justify-content: center; */
+    gap: 20px;
+    font: 400 1rem/1.5 "Roboto", sans-serif;
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+.campo{
+    font: 400 1rem/1.5 "Roboto", sans-serif;
+    background: #f7f7f7;
+    border: 1px solid var(--cor-2);
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.campo:focus{
+    outline: none;
+    background: var(--cor-0);
+    border-color: var(--cor-p1);
+    box-shadow: 0 0 0 2px #fea;
+    color: var(--cor-8);
+  }
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    
+  }
+  
+  .form label {
+    display: block;
+    font: 400 1rem/1.5 "Poppins", sans-serif;
+    margin-bottom: 4px;
+  }
+  .form input[type="text"],
+  .form input[type="email"],
+  .form textarea,
+  .form select {
+    font: 400 1rem/1.5 "Roboto", sans-serif;
+    background: #f7f7f7;
+    border: 1px solid var(--cor-2);
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .form select {
+    padding: 14.2px;
+    color: var(--cor-8);
+  }
+  .form option[value="Selecione"] {
+    display: none;
+  }
+  
+  .form input[type="text"]:focus,
+  .form input[type="email"]:focus,
+  .form textarea:focus,
+  .form select:focus {
+    outline: none;
+    background: var(--cor-0);
+    border-color: var(--cor-p1);
+    box-shadow: 0 0 0 2px #fea;
+    color: var(--cor-8);
+  }
+
+  .block{
+    display:grid;
+    grid-column: 1 / -1;
+    padding: 10px;
+  }
